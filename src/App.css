@@ -1,38 +1,393 @@
-.App {
-  text-align: center;
+
+
+/* Root variables */
+:root {
+  /* dark color is all that is dark i.e btn-dark or bg-dark */
+  --dark-color: #19395D;
+  --light-color: #F4F4F4;
+  --primary: #8AEBE4;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+body {
+    background: #F7F7F8;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+
+.invisible {
+  display: none;
+}
+
+input.form-control, select.form-control {
+    /* height: calc(1em + .375rem + 9.5px) !important; */
+    padding: .125rem .25rem !important;
+    font-size: .75rem !important;
+    line-height: 1.5;
+    border-radius: .2rem;
+}
+
+.bg-primary, .btn-primary {
+  background: var(--primary) !important;
+}
+
+.text-primary {
+  color: var(--primary) !important;
+}
+
+textarea.form-control {
+    padding: .125rem .25rem !important;
+    font-size: .75rem !important;
+    line-height: 1.5;
+    border-radius: .2rem;
+}
+
+.form-group, .table {
+    font-size: .80rem !important;
+}
+
+.title {
+  font-weight: 300;
+}
+
+[contenteditable]:focus {
+  outline: 0.5px solid #b8b8b8;
+}
+
+/* .lead {
+    font-size: .98rem;
+} */
+
+div.lg-scrollable {
+    height: 525px !important;
+    overflow: auto;
+}
+
+div.block-scrollable {
+  height: 190px !important;
+  overflow: auto;
+}
+
+.table thead, .bg-dark, .btn-dark, .modal-header {
+    background: var(--dark-color) !important;
+    color: #ECECEC !important;
+}
+.table thead {
+    opacity: .70;
+}
+
+.text-fprimary {
+    color: var(--dark-color);
+}
+.table tbody tr:nth-child(odd) {
+    background: var(--light-color);
+}
+.table tbody tr:nth-child(even), .table tbody tr.last-row {
+    background: white;
+}
+
+.table tbody tr {
+    /* height: 30px; */
+    -webkit-transition: opacity 1s, color 1s, background .8s; /* For Safari 3.1 to 6.0 */
+    /*-webkit-transition: height .65s, opacity 1s, color 1s, background .8s; /* For Safari 3.1 to 6.0 */
+    transition: opacity 2s, color 1s, background .8s;
+    /* transition: height .65s, opacity 2s, color 1s, background .8s; */
+    opacity: 1;
+}
+
+.table tbody tr:not(.last-row):hover {
+    background: var(--dark-color);
+    /* height: 72px; */
+    color: #DFE3EC;
+    cursor: pointer;
+}
+
+nav .btn-dark.active {
+  background: white !important;
+  color: var(--dark-color) !important;
+}
+
+
+/*------scroll bar---------------------*/
+  
+::-webkit-scrollbar {
+    width: 5px;
+    height: 7px;
   }
+  ::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--dark-color);
+    border: 0px none #ffffff;
+    border-radius: 0px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #525965;
+  }
+  ::-webkit-scrollbar-thumb:active {
+    background: #525965;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+    border: 0px none #ffffff;
+    border-radius: 50px;
+  }
+  ::-webkit-scrollbar-track:hover {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-track:active {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+
+
+
+
+  .fadedInElement {
+    animation: 1s fadeIn;
+    animation-fill-mode: forwards;
+    
+    visibility: hidden;
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+
+  .mail-form input {
+    margin-bottom: 7.5px;
+  }
+
+
+  .fade2 {
+    transform: scale(0.9);
+    opacity: 0;
+    transition: all .2s linear;
+    display: block !important;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.fade2.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+
+.avatar {
+  vertical-align: middle;
+  width: 120px;
+  height: 120px;
+  border-radius: 10%;
+  border: .8px ridge #E8E8E8;
+  /* border-left: 2.5px ridge #E8E8E8;
+  border-right: 4.5px ridge #E8E8E8;
+  border-top: 2.5px ridge var(--dark-color);
+  border-bottom: 3.5px ridge var(--primary); */
+}
+
+p.bubble {
+    position: relative;
+    max-width: 30em;
+    background-color: #fff;
+    padding: 5.5px;
+    /* font-size: 1.25em; */
+    border-radius: 1rem;
+  box-shadow:	0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
+
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    line-height: 1.5;
+    font-weight: 300;
+    color: #192229;
+}
+
+p.bubble::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    bottom: 100%;
+    left: 1.5em;
+    border: .75rem solid transparent;
+    border-top: none;
+
+    border-bottom-color: #fff;
+    filter: drop-shadow(0 -0.0625rem 0.0625rem rgba(0, 0, 0, .1));
+}
+
+.card {
+  background: #FDFDFD;
+}
+
+input {
+  background-color: transparent !important;
+  font-weight: bold !important;
+  color: #9D9D9D !important;
+  border: .1px solid #DFDFDF !important;
+}
+
+input:focus {
+  background-color: #D5EFF0 !important;
+}
+
+.pen-link {
   color: white;
+  transition: 0.5s;
 }
 
-.App-link {
-  color: #61dafb;
+.pen-link :hover {
+  color: var(--dark-color);
+  transition: 0.7s;
 }
 
-@keyframes App-logo-spin {
-  from {
+.pen-link-s {
+  color: #b8b8b8;
+  transition: 0.5s;
+}
+
+.pen-link-s :hover {
+  color: var(--dark-color);
+  transition: 0.7s;
+}
+
+.card-block {
+  margin-left: 7.5px;
+  margin-right: 7.5px;
+  margin-bottom: 5px;
+  border: .5px solid #EEEEEE;
+  background: white;
+  padding: 10px;
+}
+
+
+
+
+
+
+
+.dash-link {
+color: black;
+}
+
+.pen-link {
+color: #581845;
+transition: 0.5s;
+}
+
+.pen-link :hover {
+color: grey;
+transition: 0.7s;
+}
+
+.pen-link-s {
+color: #581845;
+transition: 0.5s;
+}
+
+.pen-link-s :hover {
+color: grey;
+transition: 0.7s;
+}
+
+.table thead, .bg-dark, .btn-dark, .modal-header {
+background: #19395D !important;
+color: #ECECEC !important;
+}
+.table thead {
+opacity: .70;
+}
+
+.text-fprimary {
+color: #19395D;
+}
+.table tbody tr:nth-child(odd) {
+background: rgb(240, 240, 240);
+}
+.table tbody tr:nth-child(even) {
+background: rgb(252, 252, 252);
+}
+
+.table tbody tr {
+height: 30px;
+-webkit-transition: height .65s, opacity 1s, color 1s, background .8s; /* For Safari 3.1 to 6.0 */
+transition: height .65s, opacity 2s, color 1s, background .8s;
+opacity: 1;
+}
+
+
+.form-label {
+font-weight: bold;
+color: #537295;
+}
+
+.note-editing-area {
+background-color: #fff;
+}
+
+
+.center-div {
+position: absolute;
+margin: auto;
+top: 0;
+right: 0;
+bottom: 0;
+left: 0;
+width: 125px;
+height: 125px;
+background-color: #D3DBE3;
+border-radius: 3px;
+border: 0.7px solid #5C6B8A;
+text-align: center;
+padding: 2px;
+z-index: 999;
+}
+
+.loader {
+border: 16px solid #f3f3f3;
+border-radius: 50%;
+border-top: 16px solid #5C6B8A;
+width: 120px;
+height: 120px;
+-webkit-animation: spin 2s linear infinite;
+/* Safari */
+animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+0% {
+    -webkit-transform: rotate(0deg);
+}
+
+100% {
+    -webkit-transform: rotate(360deg);
+}
+}
+
+@keyframes spin {
+0% {
     transform: rotate(0deg);
-  }
-  to {
+}
+
+100% {
     transform: rotate(360deg);
-  }
+}
+}
+
+
+.disabledEverything {
+pointer-events: none;
+opacity: 0.4;
+}
+
+.low-op {
+  opacity: .35;
 }
